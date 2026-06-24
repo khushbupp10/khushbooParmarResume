@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { ProfileAvatar } from "@/components/shared/profile-avatar";
+import { AboutProfileVisual } from "@/components/home/about-profile-visual";
 import { ResumeDownloadButton } from "@/components/shared/resume-download-button";
 import { WorkExperienceTimeline } from "@/components/shared/work-experience-timeline";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,7 +29,7 @@ export default function AboutPage() {
         <div className="grid gap-12 lg:grid-cols-3">
           <FadeIn className="lg:col-span-1">
             <div className="sticky top-24 space-y-4">
-              <ProfileAvatar />
+              <AboutProfileVisual />
               <ResumeDownloadButton className="w-full" variant="gradient" label="Download Resume" />
             </div>
           </FadeIn>

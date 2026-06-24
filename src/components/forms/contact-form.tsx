@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { contactFormSchema, type ContactFormData } from "@/lib/validations";
+import { siteConfig } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -131,9 +132,17 @@ export function ContactForm() {
       </div>
 
       {status === "error" && (
-        <div className="flex items-center gap-2 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive" role="alert">
-          <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {errorMessage}
+        <div className="flex flex-col gap-2 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive" role="alert">
+          <div className="flex items-center gap-2">
+            <AlertCircle className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span>{errorMessage}</span>
+          </div>
+          <p className="text-foreground/80">
+            Or email directly:{" "}
+            <a href={`mailto:${siteConfig.email}`} className="font-medium text-primary underline">
+              {siteConfig.email}
+            </a>
+          </p>
         </div>
       )}
 

@@ -11,15 +11,26 @@ const themeOptions = [
   { value: "neon", label: "Neon Night", icon: Sparkles },
 ] as const;
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  compact?: boolean;
+  className?: string;
+}
+
+export function ThemeToggle({ compact = false, className }: ThemeToggleProps) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
+  const options = compact ? themeOptions.filter((o) => o.value !== "neon") : themeOptions;
+  const width = compact ? "w-[72px]" : "w-[108px]";
+
   if (!mounted) {
     return (
-      <div className="h-9 w-[108px] rounded-full border border-border bg-muted/50" aria-hidden="true" />
+      <div
+        className={cn("h-9 rounded-full border border-border bg-muted/50", width, className)}
+        aria-hidden="true"
+      />
     );
   }
 
@@ -27,9 +38,12 @@ export function ThemeToggle() {
     <div
       role="radiogroup"
       aria-label="Color theme"
-      className="inline-flex items-center gap-0.5 rounded-full border border-border bg-muted/60 p-0.5"
+      className={cn(
+        "inline-flex items-center gap-0.5 rounded-full border border-border/60 bg-muted/40 p-0.5 backdrop-blur-sm",
+        className
+      )}
     >
-      {themeOptions.map((option) => {
+      {options.map((option) => {
         const Icon = option.icon;
         const active = theme === option.value;
         return (
@@ -44,7 +58,7 @@ export function ThemeToggle() {
             className={cn(
               "flex h-8 w-8 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
               active
-                ? "bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white shadow"
+                ? "bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white shadow-sm"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >

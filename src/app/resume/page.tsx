@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { ResumeDownloadButton } from "@/components/shared/resume-download-button";
-import { WorkExperienceTimeline } from "@/components/shared/work-experience-timeline";
+import { ResumeActions } from "@/components/resume/resume-actions";
+import { ExperienceTimeline } from "@/components/resume/experience-timeline";
+import { SkillsVisualization } from "@/components/resume/skills-visualization";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeIn } from "@/components/motion/fade-in";
-import { experiences, education, certifications, skills, professionalSummary } from "@/data/resume";
+import { experiences, education, certifications, professionalSummary } from "@/data/resume";
 
 export const metadata: Metadata = createMetadata({
   title: "Resume",
@@ -20,15 +21,15 @@ export default function ResumePage() {
   return (
     <>
       <PageHeader
-        title="Resume"
-        description="Frontend & AEM Developer with 8+ years of experience building scalable, accessible, high-performance web applications."
-        badge="Download Available"
+        title="Interactive Resume"
+        description="Accessibility Engineer & AI Researcher — explore experience, skills, and impact. Download the full PDF anytime."
+        badge="Interactive Experience"
       />
 
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <FadeIn>
-          <div className="mb-12 flex flex-wrap justify-end gap-3">
-            <ResumeDownloadButton variant="gradient" label="Download PDF" />
+          <div className="mb-12">
+            <ResumeActions />
           </div>
         </FadeIn>
 
@@ -45,35 +46,14 @@ export default function ResumePage() {
           </FadeIn>
 
           <FadeIn>
-            <WorkExperienceTimeline
-              experiences={experiences}
-              title="Experience"
-              showTechnologies
-            />
+            <section aria-labelledby="skills-viz-heading">
+              <SectionHeading title="Skills" />
+              <SkillsVisualization />
+            </section>
           </FadeIn>
 
           <FadeIn>
-            <section aria-labelledby="skills-heading">
-              <SectionHeading title="Skills" />
-              <div className="grid gap-4 sm:grid-cols-2">
-                {skills.map((category) => (
-                  <Card key={category.category}>
-                    <CardHeader>
-                      <CardTitle className="text-base">{category.category}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex flex-wrap gap-1">
-                        {category.skills.map((skill) => (
-                          <Badge key={skill} variant="secondary" className="text-xs">
-                            {skill}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
+            <ExperienceTimeline experiences={experiences} />
           </FadeIn>
 
           {education.length > 0 && (

@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { contactFormSchema } from "@/lib/validations";
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+import { getContactFromEmail, getContactRecipient, getResendClient } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
@@ -16,31 +14,68 @@ export async function POST(request: Request) {
       );
     }
 
-    const { name, email, subject, message } = result.data;
-
+    const resend = getResendClient();
     if (!resend) {
-      console.log("Contact form submission (Resend not configured):", { name, email, subject, message });
-      return NextResponse.json({ success: true, message: "Message received (dev mode)" });
+      console.error(
+        "Contact form: RESEND_API_KEY is not set. Add it to .env.local (local) or Vercel environment variables (production)."
+      );
+      return NextResponse.json(
+        {
+          error:
+            "Email service is not configured yet. Please email me directly at Khushbooparmar1508@gmail.com.",
+        },
+        { status: 503 }
+      );
     }
 
-    await resend.emails.send({
-      from: process.env.NEWSLETTER_FROM_EMAIL || "onboarding@resend.dev",
-      to: process.env.CONTACT_EMAIL || "hello@khushbooparmar.com",
+    const { name, email, subject, message } = result.data;
+
+    const { data, error } = await resend.emails.send({
+      from: getContactFromEmail(),
+      to: getContactRecipient(),
       replyTo: email,
       subject: `[Contact] ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
       `,
     });
+
+    if (error) {
+      console.error("Resend contact error:", error);
+      const isDev = process.env.NODE_ENV === "development";
+      let detail = "Failed to send message. Please try again or email me directly.";
+      if (isDev) {
+        if (error.message === "API key is invalid") {
+          detail =
+            "Invalid RESEND_API_KEY in .env.local — create a new key at resend.com/api-keys";
+        } else if (error.message?.includes("domain")) {
+          detail =
+            "Sender domain not verified in Resend — verify khushbooparmar.com or set CONTACT_FROM_EMAIL=onboarding@resend.dev in .env.local";
+        }
+      }
+      return NextResponse.json({ error: detail }, { status: 500 });
+    }
+
+    if (process.env.NODE_ENV === "development" && data?.id) {
+      console.log("Contact email queued:", { id: data.id, to: getContactRecipient() });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json({ error: "Failed to send message" }, { status: 500 });
   }
+}
+
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }

@@ -26,7 +26,7 @@ export function RecentPublications() {
               <Card className="flex h-full flex-col">
                 <CardHeader>
                   <div className="flex gap-2">
-                    <Badge variant="secondary">{pub.type}</Badge>
+                    <Badge variant="secondary">{pub.submissionType}</Badge>
                     <Badge variant="outline">{pub.year}</Badge>
                   </div>
                   <CardTitle className="text-lg mt-2">{pub.title}</CardTitle>

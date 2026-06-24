@@ -24,9 +24,9 @@ export function slugify(text: string): string {
 
 export const siteConfig = {
   name: "Khushboo Parmar",
-  title: "Frontend Engineer | Accessibility Advocate | AI Researcher",
+  title: "Accessibility Engineer | AI Researcher | Frontend Developer | Author",
   description:
-    "Khushboo Parmar builds inclusive digital experiences at the intersection of frontend engineering, accessibility, and AI research.",
+    "Building AI-powered accessible experiences for everyone — at the intersection of accessibility engineering, AI research, and inclusive technology.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://khushbooparmar.com",
   email: "Khushbooparmar1508@gmail.com",
   phone: "216-507-9712",

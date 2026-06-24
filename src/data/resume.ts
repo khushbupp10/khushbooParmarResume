@@ -5,6 +5,7 @@ export interface Experience {
   period: string;
   description: string[];
   technologies: string[];
+  highlights?: string[];
 }
 
 export interface Education {
@@ -45,6 +46,10 @@ export const experiences: Experience[] = [
       "Collaborated with backend teams and designers to deliver high-quality user experiences.",
     ],
     technologies: ["React.js", "AEM", "HTML", "CSS", "JavaScript", "REST APIs", "Redux"],
+    highlights: [
+      "Built a reusable, WCAG-aligned UI component library powering multiple cruise brand experiences.",
+      "Delivered accessible, responsive applications across desktop, tablet, and mobile.",
+    ],
   },
   {
     title: "AEM/UI Developer",
@@ -60,6 +65,10 @@ export const experiences: Experience[] = [
       "Worked with RESTful and SOAP web services for system integrations.",
     ],
     technologies: ["AEM", "Angular", "Java", "JSP", "REST APIs", "Docker", "Jenkins"],
+    highlights: [
+      "Architected reusable AEM components, templates, and workflows for an enterprise platform.",
+      "Implemented CI/CD pipelines with Docker and Jenkins to streamline deployments.",
+    ],
   },
   {
     title: "AEM/UI Developer",
@@ -73,6 +82,10 @@ export const experiences: Experience[] = [
       "Configured dispatcher and optimized performance in author/publish environments.",
     ],
     technologies: ["AEM", "HTL (Sightly)", "OSGi", "JSP", "Java", "REST APIs"],
+    highlights: [
+      "Migrated legacy JSP components to HTL (Sightly) for better performance and maintainability.",
+      "Optimized author/publish performance through dispatcher configuration.",
+    ],
   },
 ];
 

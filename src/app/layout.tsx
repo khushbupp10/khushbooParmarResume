@@ -6,6 +6,8 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PointerFeedback } from "@/components/interaction/pointer-feedback";
 import { CursorGlow } from "@/components/interaction/cursor-glow";
+import { PersonaProvider } from "@/components/lab/persona-provider";
+import { AiAssistant } from "@/components/assistant/ai-assistant";
 import { createMetadata, createPersonJsonLd, createWebsiteJsonLd } from "@/lib/seo";
 import { siteConfig } from "@/lib/utils";
 import "./globals.css";
@@ -44,19 +46,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem={false}
           disableTransitionOnChange
           themes={["light", "dark", "neon"]}
         >
-          <CursorGlow />
-          <PointerFeedback />
-          <SkipNav />
-          <Header />
-          <main id="main-content" tabIndex={-1} className="relative z-10">
-            {children}
-          </main>
-          <Footer />
+          <PersonaProvider>
+            <CursorGlow />
+            <PointerFeedback />
+            <SkipNav />
+            <Header />
+            <main id="main-content" tabIndex={-1} className="relative z-10">
+              {children}
+            </main>
+            <Footer />
+            <AiAssistant />
+          </PersonaProvider>
         </ThemeProvider>
       </body>
     </html>

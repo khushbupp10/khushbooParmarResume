@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { newsletterFormSchema } from "@/lib/validations";
 import { siteConfig } from "@/lib/utils";
-
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+import { getFromEmail, getResendClient } from "@/lib/email";
 
 export async function POST(request: Request) {
   try {
@@ -17,15 +15,19 @@ export async function POST(request: Request) {
       );
     }
 
-    const { email, firstName } = result.data;
-
+    const resend = getResendClient();
     if (!resend) {
-      console.log("Newsletter signup (Resend not configured):", { email, firstName });
-      return NextResponse.json({ success: true, message: "Subscribed (dev mode)" });
+      console.error("Newsletter: RESEND_API_KEY is not set.");
+      return NextResponse.json(
+        { error: "Email service is not configured yet. Please try again later." },
+        { status: 503 }
+      );
     }
 
-    await resend.emails.send({
-      from: process.env.NEWSLETTER_FROM_EMAIL || "onboarding@resend.dev",
+    const { email, firstName } = result.data;
+
+    const { error } = await resend.emails.send({
+      from: getFromEmail(),
       to: email,
       subject: `Welcome to ${siteConfig.newsletter.title}`,
       html: `
@@ -36,6 +38,11 @@ export async function POST(request: Request) {
         <p><a href="${siteConfig.url}/newsletter/confirm">Confirm your subscription</a></p>
       `,
     });
+
+    if (error) {
+      console.error("Resend newsletter error:", error);
+      return NextResponse.json({ error: "Failed to subscribe. Please try again later." }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

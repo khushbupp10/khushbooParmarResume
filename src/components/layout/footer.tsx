@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { GitHubIcon, LinkedInIcon } from "@/components/icons/social-icons";
+import { BrandLogo } from "@/components/layout/brand-logo";
 import { siteConfig } from "@/lib/utils";
 
 const footerNav = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
+  { href: "/research", label: "Research" },
+  { href: "/publications", label: "Publications" },
   { href: "/projects", label: "Projects" },
+  { href: "/resume", label: "Resume" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -15,13 +18,19 @@ export function Footer() {
     <footer className="py-10 sm:py-12" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col items-center gap-2 lg:items-start">
+          <div className="flex flex-col items-center gap-3 lg:items-start">
             <Link
               href="/"
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-sm font-bold text-primary shadow-[0_0_20px_oklch(0.65_0.14_45_/_0.15)] transition-colors hover:bg-primary/15"
+              className="group flex items-center gap-3 rounded-xl outline-offset-4 transition-opacity hover:opacity-95"
               aria-label={`${siteConfig.name} — Home`}
             >
-              KP
+              <BrandLogo size="sm" />
+              <div className="text-left">
+                <p className="text-sm font-bold tracking-tight gradient-text">{siteConfig.name}</p>
+                <p className="text-xs text-muted-foreground">
+                  Accessibility Engineer · AI Researcher
+                </p>
+              </div>
             </Link>
             <p className="text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} {siteConfig.name}

@@ -21,6 +21,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-green: var(--accent-green);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --radius-sm: calc(var(--radius) - 4px);
@@ -29,73 +31,79 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-/* Light theme — warm ivory & coral palette */
+/* Light theme — clean white lab */
 :root {
   --radius: 0.75rem;
-  --background: #fffaf5;
-  --foreground: oklch(0.28 0.03 45);
-  --card: #fffefb;
-  --card-foreground: oklch(0.28 0.03 45);
-  --popover: #fffefb;
-  --popover-foreground: oklch(0.28 0.03 45);
-  --primary: oklch(0.6 0.17 42);
-  --primary-foreground: oklch(0.99 0.01 75);
-  --secondary: #fff5ee;
-  --secondary-foreground: oklch(0.35 0.04 45);
-  --muted: #fff7f0;
-  --muted-foreground: oklch(0.46 0.035 45);
-  --accent: #fff0e6;
-  --accent-foreground: oklch(0.32 0.04 42);
+  --background: #fafbfc;
+  --foreground: oklch(0.2 0.03 280);
+  --card: #ffffff;
+  --card-foreground: oklch(0.2 0.03 280);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.2 0.03 280);
+  --primary: oklch(0.45 0.18 280);
+  --primary-foreground: #ffffff;
+  --secondary: oklch(0.96 0.02 280);
+  --secondary-foreground: oklch(0.3 0.05 280);
+  --muted: oklch(0.96 0.015 280);
+  --muted-foreground: oklch(0.48 0.03 280);
+  --accent: oklch(0.94 0.03 280);
+  --accent-foreground: oklch(0.25 0.05 280);
+  --accent-cyan: oklch(0.55 0.14 195);
+  --accent-green: oklch(0.55 0.16 145);
   --destructive: oklch(0.55 0.2 25);
-  --border: #f3e8de;
-  --input: #f3e8de;
-  --ring: oklch(0.62 0.15 42);
-  --gradient-start: oklch(0.58 0.17 38);
-  --gradient-end: oklch(0.7 0.14 55);
-  --glass: rgb(255 254 251 / 0.82);
-  --glass-border: rgb(243 232 222 / 0.65);
-  --selection: oklch(0.78 0.12 50 / 0.45);
-  --selection-foreground: oklch(0.22 0.03 45);
-  --click-ripple: oklch(0.65 0.14 45 / 0.35);
-  --cursor-glow-warm: oklch(0.88 0.1 55 / 0.35);
-  --cursor-glow-cool: oklch(0.86 0.06 235 / 0.2);
-  --page-glow-1: oklch(0.9 0.055 52 / 0.55);
-  --page-glow-2: oklch(0.96 0.03 70 / 0.25);
-  --experience-bg: #fff8e8;
-  --experience-border: #f5e8c8;
+  --border: oklch(0.9 0.02 280);
+  --input: oklch(0.9 0.02 280);
+  --ring: oklch(0.55 0.16 250);
+  --gradient-start: oklch(0.45 0.2 280);
+  --gradient-end: oklch(0.55 0.18 250);
+  --glass: rgb(255 255 255 / 0.75);
+  --glass-border: oklch(0.88 0.03 280 / 0.5);
+  --selection: oklch(0.7 0.12 250 / 0.35);
+  --selection-foreground: oklch(0.15 0.03 280);
+  --click-ripple: oklch(0.55 0.14 250 / 0.3);
+  --cursor-glow-warm: oklch(0.7 0.15 280 / 0.2);
+  --cursor-glow-cool: oklch(0.75 0.12 195 / 0.15);
+  --page-glow-1: oklch(0.85 0.08 280 / 0.25);
+  --page-glow-2: oklch(0.88 0.06 195 / 0.15);
+  --experience-bg: oklch(0.97 0.02 280);
+  --experience-border: oklch(0.9 0.03 280);
 }
 
-/* Dark theme — neutral charcoal */
+/* Dark theme — rich charcoal lab (default) */
 .dark {
-  --background: oklch(0.14 0.008 265);
-  --foreground: oklch(0.96 0.005 265);
-  --card: oklch(0.18 0.01 265 / 0.75);
-  --card-foreground: oklch(0.96 0.005 265);
-  --popover: oklch(0.17 0.01 265);
-  --popover-foreground: oklch(0.96 0.005 265);
-  --primary: oklch(0.88 0.01 265);
-  --primary-foreground: oklch(0.14 0.008 265);
-  --secondary: oklch(0.22 0.01 265);
-  --secondary-foreground: oklch(0.92 0.008 265);
-  --muted: oklch(0.22 0.01 265);
-  --muted-foreground: oklch(0.68 0.015 265);
-  --accent: oklch(0.26 0.015 265);
-  --accent-foreground: oklch(0.96 0.005 265);
+  --background: oklch(0.13 0.02 280);
+  --foreground: oklch(0.95 0.01 280);
+  --card: oklch(0.17 0.025 280 / 0.8);
+  --card-foreground: oklch(0.95 0.01 280);
+  --popover: oklch(0.16 0.025 280);
+  --popover-foreground: oklch(0.95 0.01 280);
+  --primary: oklch(0.65 0.2 280);
+  --primary-foreground: oklch(0.98 0.01 280);
+  --secondary: oklch(0.22 0.03 280);
+  --secondary-foreground: oklch(0.92 0.01 280);
+  --muted: oklch(0.22 0.025 280);
+  --muted-foreground: oklch(0.68 0.03 280);
+  --accent: oklch(0.26 0.04 280);
+  --accent-foreground: oklch(0.95 0.01 280);
+  --accent-cyan: oklch(0.78 0.14 195);
+  --accent-green: oklch(0.75 0.16 145);
   --destructive: oklch(0.62 0.2 25);
-  --border: oklch(0.28 0.012 265);
-  --input: oklch(0.28 0.012 265);
-  --ring: oklch(0.72 0.05 250);
-  --gradient-start: oklch(0.88 0.02 265);
-  --gradient-end: oklch(0.72 0.06 250);
-  --glass: oklch(0.2 0.012 265 / 0.55);
-  --glass-border: oklch(0.35 0.015 265 / 0.45);
-  --selection: oklch(0.55 0.08 250 / 0.45);
-  --selection-foreground: oklch(0.98 0.005 265);
-  --click-ripple: oklch(0.72 0.08 250 / 0.35);
-  --cursor-glow-warm: oklch(0.45 0.1 55 / 0.22);
-  --cursor-glow-cool: oklch(0.42 0.08 250 / 0.18);
-  --page-glow-1: oklch(0.35 0.06 55 / 0.2);
-  --page-glow-2: oklch(0.3 0.04 250 / 0.12);
+  --border: oklch(0.28 0.03 280);
+  --input: oklch(0.28 0.03 280);
+  --ring: oklch(0.72 0.14 250);
+  --gradient-start: oklch(0.65 0.22 280);
+  --gradient-end: oklch(0.75 0.16 250);
+  --glass: oklch(0.18 0.03 280 / 0.6);
+  --glass-border: oklch(0.4 0.08 280 / 0.35);
+  --selection: oklch(0.55 0.15 280 / 0.4);
+  --selection-foreground: oklch(0.98 0.01 280);
+  --click-ripple: oklch(0.65 0.18 250 / 0.35);
+  --cursor-glow-warm: oklch(0.5 0.2 280 / 0.3);
+  --cursor-glow-cool: oklch(0.5 0.15 195 / 0.25);
+  --page-glow-1: oklch(0.35 0.15 280 / 0.35);
+  --page-glow-2: oklch(0.3 0.1 195 / 0.2);
+  --experience-bg: oklch(0.2 0.03 280 / 0.7);
+  --experience-border: oklch(0.32 0.05 280);
 }
 
 /* Neon night theme — deep midnight with magenta + cyan neon */
@@ -183,6 +191,42 @@
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
+  }
+
+  .site-header {
+    background: linear-gradient(
+      135deg,
+      oklch(0.55 0.2 250 / 0.06),
+      oklch(0.55 0.22 300 / 0.08)
+    );
+    box-shadow:
+      0 1px 0 oklch(1 0 0 / 0.04) inset,
+      0 8px 32px oklch(0.4 0.15 280 / 0.08);
+  }
+
+  .brand-logo {
+    box-shadow:
+      0 0 0 1px oklch(0.55 0.2 250 / 0.2),
+      0 4px 16px oklch(0.45 0.18 280 / 0.15);
+  }
+
+  .about-profile-orbit {
+    animation: profile-orbit 24s linear infinite;
+  }
+
+  @keyframes profile-orbit {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .about-profile-orbit {
+      animation: none;
+    }
   }
 
   .gradient-text {
@@ -317,5 +361,83 @@
   [role="button"]:active {
     transform: scale(0.98);
     transition: transform 0.1s ease;
+  }
+
+  .lab-hero-glow {
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 20%, oklch(0.45 0.2 280 / 0.35), transparent),
+      radial-gradient(ellipse 60% 50% at 20% 80%, oklch(0.4 0.15 195 / 0.2), transparent);
+  }
+
+  .vision-glow {
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 30%, oklch(0.5 0.2 280 / 0.18), transparent),
+      radial-gradient(ellipse 50% 50% at 80% 90%, oklch(0.5 0.15 195 / 0.12), transparent);
+  }
+
+  /* Persona adaptations */
+  html[data-persona="blind"] {
+    --ring: oklch(0.85 0.2 145);
+  }
+  html[data-persona="blind"] *:focus-visible {
+    outline: 3px solid oklch(0.85 0.2 145) !important;
+    outline-offset: 3px !important;
+  }
+  html[data-persona="blind"] .gradient-text,
+  html[data-persona="blind"] canvas {
+    opacity: 0.3;
+  }
+
+  html[data-persona="low-vision"] {
+    font-size: 125%;
+    --foreground: oklch(0.98 0.01 280);
+    --background: oklch(0.05 0.02 280);
+    --muted-foreground: oklch(0.85 0.02 280);
+  }
+  html[data-persona="low-vision"] body {
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  html[data-persona="dyslexia"] body {
+    font-family: "Comic Sans MS", "OpenDyslexic", var(--font-geist-sans), sans-serif !important;
+    line-height: 1.8;
+    letter-spacing: 0.06em;
+    word-spacing: 0.12em;
+  }
+  html[data-persona="dyslexia"] p,
+  html[data-persona="dyslexia"] li {
+    max-width: 65ch;
+  }
+
+  html[data-persona="motor"] button,
+  html[data-persona="motor"] a,
+  html[data-persona="motor"] [role="button"],
+  html[data-persona="motor"] input,
+  html[data-persona="motor"] select {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  html[data-persona="motor"] *:focus-visible {
+    outline-width: 4px !important;
+  }
+
+  html[data-persona="cognitive"] {
+    --background: oklch(0.97 0.01 280);
+    --foreground: oklch(0.2 0.03 280);
+  }
+  html[data-persona="cognitive"] .dark {
+    --background: oklch(0.15 0.02 280);
+    --foreground: oklch(0.95 0.01 280);
+  }
+  html[data-persona="cognitive"] * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.15s !important;
+  }
+  html[data-persona="cognitive"] section {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    padding: 1rem;
   }
 }
