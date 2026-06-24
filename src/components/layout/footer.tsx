@@ -5,7 +5,6 @@ import { siteConfig } from "@/lib/utils";
 
 const footerNav = [
   { href: "/", label: "Home" },
-  { href: "/research", label: "Research" },
   { href: "/publications", label: "Publications" },
   { href: "/projects", label: "Projects" },
   { href: "/resume", label: "Resume" },

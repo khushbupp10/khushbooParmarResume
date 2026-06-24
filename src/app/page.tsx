@@ -6,7 +6,6 @@ import { PersonaSimulator } from "@/components/lab/persona-simulator";
 import { AccessibilityLabPreview } from "@/components/lab/accessibility-lab-preview";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { PersonalVision } from "@/components/home/personal-vision";
-import { NewsletterSection } from "@/components/home/newsletter-section";
 import { FadeIn } from "@/components/motion/fade-in";
 
 export default function HomePage() {
@@ -26,7 +25,6 @@ export default function HomePage() {
       <AccessibilityLabPreview />
       <FeaturedProjects />
       <PersonalVision />
-      <NewsletterSection />
     </>
   );
 }

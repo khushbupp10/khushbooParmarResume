@@ -14,8 +14,8 @@ export const assistantKnowledge: AssistantEntry[] = [
   {
     keywords: ["research", "papers", "publications", "academic", "scholar"],
     response:
-      "Khushboo has published research on MANET energy efficiency and image compression, and is actively researching adaptive UI and AI-assisted accessibility. Explore the Research Hub for papers and citations.",
-    link: { href: "/research", label: "Research Hub" },
+      "Khushboo has published research on MANET energy efficiency and image compression, and is actively researching adaptive UI and AI-assisted accessibility. Explore publications for papers, pipeline, and research vision.",
+    link: { href: "/publications", label: "Publications & Research" },
   },
   {
     keywords: ["accessibility", "wcag", "a11y", "ada", "inclusive", "lab"],
@@ -57,7 +57,7 @@ export const assistantKnowledge: AssistantEntry[] = [
     keywords: ["publications", "papers", "under review", "venue", "journal", "conference"],
     response:
       "The Publications & Research Center showcases published papers and work under review at ACM and Springer Nature, plus the research pipeline and future vision.",
-    link: { href: "/research", label: "View research center" },
+    link: { href: "/publications", label: "View publications" },
   },
   {
     keywords: ["contact", "email", "reach", "collaborate"],

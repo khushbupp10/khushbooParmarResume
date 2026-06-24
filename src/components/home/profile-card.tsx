@@ -61,10 +61,9 @@ export function ProfileCard() {
       </p>
 
       <div className="mt-5">
-        <h2 className="text-xl font-bold tracking-tight">{siteConfig.name}</h2>
-        <p className="mt-1 text-sm font-medium text-muted-foreground">
-          Accessibility Engineer &amp; AI Researcher
-        </p>
+        <h2 className="text-2xl font-bold tracking-tight gradient-text sm:text-3xl">
+          {siteConfig.name}
+        </h2>
       </div>
 
       <p className="mt-5 text-sm leading-relaxed text-muted-foreground">

@@ -87,6 +87,41 @@ export const experiences: Experience[] = [
       "Optimized author/publish performance through dispatcher configuration.",
     ],
   },
+  {
+    title: "Front-End Developer",
+    company: "Premier Logic",
+    location: "Atlanta, GA",
+    period: "Feb 2018 — May 2018",
+    description: [
+      "Built responsive single-page applications using AngularJS and modern JavaScript frameworks.",
+      "Implemented two-way data binding and MVC architecture for dynamic UI updates.",
+      "Collaborated with QA teams for testing and debugging using JIRA.",
+    ],
+    technologies: ["AngularJS", "HTML5", "CSS3", "JavaScript", "REST APIs", "JIRA"],
+  },
+  {
+    title: "UI Developer (Intern)",
+    company: "Hyland Software",
+    location: "Cleveland, OH",
+    period: "May 2017 — Aug 2017",
+    description: [
+      "Developed UI interfaces using HTML, CSS, JavaScript, and C/C++.",
+      "Contributed to performance optimization and cross-browser compatibility improvements.",
+      "Supported development of testing standards and automation approaches.",
+    ],
+    technologies: ["HTML", "CSS", "JavaScript", "C/C++"],
+  },
+  {
+    title: "UI Developer",
+    company: "Cleveland State University",
+    location: "Cleveland, OH",
+    period: "Mar 2016 — Apr 2017",
+    description: [
+      "Managed and maintained student data systems using SQL and enterprise tools.",
+      "Developed and optimized database queries, stored procedures, and data workflows.",
+    ],
+    technologies: ["SQL", "Database Management", "Enterprise Tools"],
+  },
 ];
 
 export const education: Education[] = [
@@ -99,7 +134,7 @@ export const education: Education[] = [
   {
     degree: "Bachelor of Information Technology",
     institution: "Gujarat Technological University, India",
-    period: "Jun 2011 — May 2016",
+    period: "Jun 2011 — May 2015",
     details: "GPA: 3.8",
   },
 ];

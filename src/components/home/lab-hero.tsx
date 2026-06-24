@@ -125,7 +125,7 @@ export function LabHero() {
                 className="border-primary/40 bg-card/30 hover:bg-primary/10"
                 asChild
               >
-                <Link href="/research">
+                <Link href="/publications">
                   <Microscope className="mr-2 h-4 w-4" aria-hidden="true" />
                   View Research
                 </Link>

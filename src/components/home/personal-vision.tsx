@@ -46,8 +46,8 @@ export function PersonalVision() {
         <FadeIn delay={0.35}>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Button variant="gradient" size="lg" asChild>
-              <Link href="/research">
-                Explore the Research Hub
+              <Link href="/publications">
+                Explore Publications & Research
                 <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
               </Link>
             </Button>
