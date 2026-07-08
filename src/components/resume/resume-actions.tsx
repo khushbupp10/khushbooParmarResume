@@ -1,15 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Download, Printer, Share2, Check } from "lucide-react";
+import { Download, Share2, Check } from "lucide-react";
 import { resumePdf } from "@/data/resume";
 import { siteConfig } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 export function ResumeActions() {
   const [shared, setShared] = useState(false);
-
-  const handlePrint = () => window.print();
 
   const handleShare = async () => {
     const url = `${siteConfig.url}/resume`;
@@ -42,10 +40,6 @@ export function ResumeActions() {
           <Download className="mr-2 h-4 w-4" aria-hidden="true" />
           Download PDF
         </a>
-      </Button>
-      <Button variant="outline" onClick={handlePrint}>
-        <Printer className="mr-2 h-4 w-4" aria-hidden="true" />
-        Print
       </Button>
       <Button variant="outline" onClick={handleShare}>
         {shared ? (

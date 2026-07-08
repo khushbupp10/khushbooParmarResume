@@ -22,6 +22,32 @@ export const platformLabels: Record<ArticlePlatform, string> = {
 export const blogArticles: BlogArticle[] = [
   // Medium — @khushbupp10
   {
+    id: "medium-ai-agents-semantic-html",
+    title: "Accessibility in the Age of AI Agents: Why Semantic HTML Matters More Than Ever",
+    description:
+      "AI agents are beginning to browse the web on our behalf — and the same semantic HTML that helps screen readers also helps machines understand your interface.",
+    date: "2026-07-08",
+    category: "Accessibility",
+    tags: ["accessibility", "AI agents", "semantic HTML", "inclusive design"],
+    featured: true,
+    readingTime: "6 min read",
+    url: "https://medium.com/@khushbupp10/accessibility-in-the-age-of-ai-agents-why-semantic-html-matters-more-than-ever-08c70530e0f3",
+    platform: "medium",
+  },
+  {
+    id: "medium-ai-agents-inclusive-tech",
+    title: "AI Agents and Accessibility: The Next Frontier of Inclusive Technology",
+    description:
+      "Accessibility is entering a new era — where AI agents and inclusive design intersect to create more adaptive digital experiences.",
+    date: "2026-06-20",
+    category: "AI",
+    tags: ["accessibility", "AI agents", "inclusive technology", "AI"],
+    featured: true,
+    readingTime: "7 min read",
+    url: "https://medium.com/@khushbupp10/ai-agents-and-accessibility-the-next-frontier-of-inclusive-technology-a1b191696318",
+    platform: "medium",
+  },
+  {
     id: "medium-accessible-travel",
     title: "Beyond Ramps and Elevators: The Future of Accessible Travel in the Digital Age",
     description:
@@ -127,6 +153,19 @@ export const blogArticles: BlogArticle[] = [
   },
 
   // DEV — dev.to/khushboo_parmar
+  {
+    id: "devto-ai-build-ui-accessibility",
+    title: "AI Can Build Your UI in Seconds—But Can Everyone Use It?",
+    description:
+      "LLMs can generate React components and full interfaces in seconds — but accessibility often becomes an unintended casualty. Here's what to watch for.",
+    date: "2026-07-08",
+    category: "AI",
+    tags: ["AI", "accessibility", "frontend", "LLM", "React"],
+    featured: true,
+    readingTime: "1 min read",
+    url: "https://dev.to/khushboo_parmar/ai-can-build-your-ui-in-seconds-but-can-everyone-use-it-47cj",
+    platform: "devto",
+  },
   {
     id: "devto-gaming-platform-observation",
     title: "I Built an Accessible Gaming Platform That Profiles Players Through Observation Instead of Settings Menus",
