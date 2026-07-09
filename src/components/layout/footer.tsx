@@ -40,6 +40,12 @@ export function Footer() {
             >
               Accessibility statement
             </Link>
+            <Link
+              href="/intellectual-property"
+              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Intellectual property
+            </Link>
           </div>
 
           <nav aria-label="Footer navigation">

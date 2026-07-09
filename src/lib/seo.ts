@@ -52,6 +52,74 @@ export function createMetadata({
   };
 }
 
+/** Tighter crawler controls for pages with proprietary layout and resume content. */
+export function createProtectedMetadata({
+  title,
+  description,
+  path = "",
+}: Pick<PageMetadata, "title" | "description" | "path">) {
+  return {
+    ...createMetadata({ title, description, path }),
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      noarchive: true,
+      nosnippet: true,
+      noimageindex: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        noarchive: true,
+        nosnippet: true,
+        "max-snippet": 0,
+        "max-image-preview": "none" as const,
+        "max-video-preview": 0,
+      },
+    },
+    other: {
+      copyright: siteConfig.name,
+      author: siteConfig.name,
+    },
+  };
+}
+
+export function createResumeJsonLd() {
+  return createProtectedWorkJsonLd({
+    name: `${siteConfig.name} — Interactive Resume`,
+    path: "/resume",
+  });
+}
+
+export function createProtectedWorkJsonLd({
+  name,
+  path,
+}: {
+  name: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name,
+    url: `${siteConfig.url}${path}`,
+    author: {
+      "@type": "Person",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    copyrightHolder: {
+      "@type": "Person",
+      name: siteConfig.name,
+    },
+    copyrightYear: new Date().getFullYear(),
+    license: `${siteConfig.url}/intellectual-property`,
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
+  };
+}
+
 export function createPersonJsonLd() {
   return {
     "@context": "https://schema.org",

@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { createMetadata } from "@/lib/seo";
+import { createProtectedMetadata, createResumeJsonLd } from "@/lib/seo";
 import { PageHeader } from "@/components/shared/page-header";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { ResumeActions } from "@/components/resume/resume-actions";
+import { ResumeProtection } from "@/components/resume/resume-protection";
 import { ExperienceTimeline } from "@/components/resume/experience-timeline";
 import { SkillsVisualization } from "@/components/resume/skills-visualization";
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FadeIn } from "@/components/motion/fade-in";
 import { experiences, education, certifications, professionalSummary } from "@/data/resume";
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = createProtectedMetadata({
   title: "Resume",
   description:
     "Professional resume of Khushboo Parmar — Frontend & AEM Developer with 8+ years of experience building accessible, scalable web applications.",
@@ -18,8 +18,14 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function ResumePage() {
+  const resumeJsonLd = createResumeJsonLd();
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(resumeJsonLd) }}
+      />
       <PageHeader
         title="Interactive Resume"
         description="Accessibility Engineer & AI Researcher — explore experience, skills, and impact. Download the full PDF anytime."
@@ -33,7 +39,8 @@ export default function ResumePage() {
           </div>
         </FadeIn>
 
-        <div className="space-y-12">
+        <ResumeProtection>
+          <div className="space-y-12">
           <FadeIn>
             <section aria-labelledby="summary-heading">
               <SectionHeading title="Professional Summary" />
@@ -103,7 +110,8 @@ export default function ResumePage() {
             </section>
           </FadeIn>
           )}
-        </div>
+          </div>
+        </ResumeProtection>
       </div>
     </>
   );

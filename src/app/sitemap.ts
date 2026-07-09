@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/resume",
     "/contact",
     "/accessibility-statement",
+    "/intellectual-property",
   ].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: new Date(),
