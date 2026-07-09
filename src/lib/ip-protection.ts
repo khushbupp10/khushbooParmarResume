@@ -21,14 +21,12 @@ export const AI_TRAINING_BOTS = [
   "FacebookBot",
 ] as const;
 
-const domain = siteConfig.url.replace(/^https?:\/\//, "");
 const year = new Date().getFullYear();
 
 export const siteProtection = {
   owner: siteConfig.name,
   siteUrl: siteConfig.url,
   copyrightNotice: `© ${year} ${siteConfig.name}. All rights reserved.`,
-  watermarkText: `© ${siteConfig.name} · ${domain}`,
   getSourceUrl: (path: string) => `${siteConfig.url}${path}`,
   getClipboardAttribution: (path: string) =>
     `Source: ${siteConfig.url}${path} · © ${siteConfig.name}`,

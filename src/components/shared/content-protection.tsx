@@ -38,37 +38,18 @@ export function ContentProtection({
 
   return (
     <div
-      className={cn("content-protected relative", className)}
+      className={cn("content-protected", className)}
       data-owner={siteProtection.owner}
       data-source={sourceUrl}
       data-nosnippet
       translate="no"
       onCopy={handleCopy}
     >
-      <div
-        className="content-watermark pointer-events-none absolute inset-0 overflow-hidden"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 18 }, (_, index) => (
-          <span
-            key={index}
-            className="content-watermark-label absolute whitespace-nowrap text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/30"
-            style={{
-              left: `${(index % 3) * 34}%`,
-              top: `${Math.floor(index / 3) * 22}%`,
-              transform: "rotate(-24deg)",
-            }}
-          >
-            {siteProtection.watermarkText}
-          </span>
-        ))}
-      </div>
-
-      <div className="relative z-[1]">{children}</div>
+      {children}
 
       {showNotice && (
         <aside
-          className="relative z-[1] mx-auto mt-10 max-w-4xl rounded-xl border border-border/60 bg-muted/20 px-4 py-3 text-center text-xs leading-relaxed text-muted-foreground sm:text-sm"
+          className="mx-auto mt-10 max-w-4xl rounded-xl border border-border/60 bg-muted/20 px-4 py-3 text-center text-xs leading-relaxed text-muted-foreground sm:text-sm"
           aria-label="Copyright and usage notice"
         >
           <p className="flex items-center justify-center gap-2 font-medium text-foreground/80">
